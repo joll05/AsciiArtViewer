@@ -10,25 +10,38 @@
     </head>
     <body>
         <div class="selection">
-            <form class="selection-item" id="submission-form">
+            <form class="selection-item" id="submission-form" action="">
                 <h3>Submit</h3>
-                <label for="submission-art" class="submission-label">Paste your ascii art here (max 66000 characters):</label><br>
-                <textarea id="submission-art" maxlength="66000" required></textarea><br>
+                <label for="paste-radio">Paste art</label>
+                <input type="radio" id="paste-radio" name="submission-type" value="paste" checked>
+                <label for="upload-radio">Upload art</label>
+                <input type="radio" id="upload-radio" name="submission-type" value="upload">
+                <br>
+                <div class="paste-area">
+                    <label for="submission-paste" class="submission-label">Paste your ascii art here (max 66000 characters):</label><br>
+                    <textarea id="submission-paste" maxlength="66000" name="submission-text"></textarea><br>
+                </div>
+                <div class="upload-area" style="display: none;">
+                    <label for="submission-upload" class="submission-label">Upload your ascii art here (.txt files, max 100kb):</label><br>
+                    <input type="file" id="submission-upload" name="submission-file"><br>
+                </div>
                 <label for="submission-name" class="submission-label">Name of your ascii art (must be unique):</label><br>
-                <input type="text" id="submission-name" required><br><br>
+                <input type="text" id="submission-name" name="submission-name" required><br><br>
                 <input type="submit">
                 <p class="error" style="display: none;">Error: Missing Error Message</p>
             </form>
             <form class="selection-item">
                 <h3>Load</h3>
                 <label for="loading-name">Name:</label><br>
-                <input type="text" id="loading-name" required><br><br>
+                <input type="text" id="loading-name" name="load" required><br><br>
                 <input type="submit" value="Load">
             </form>
         </div>
         <div class="content" style="display: none;"></div>
 
-        <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase.js"></script> <!-- TODO: replace this with the basic one and add the storage module -->
+        <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-storage.js"></script>
         <script src="intialize-firebase.js"></script>
+        <script src="submission.js"></script>
     </body>
 </html>
