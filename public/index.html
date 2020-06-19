@@ -5,10 +5,12 @@
         <link rel="icon" href="favicon.ico">
 
         <link rel="stylesheet" href="style.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
         <div class="selection">
-            <form class="selection-item">
+            <form class="selection-item" id="submission-form">
                 <h3>Submit</h3>
                 <label for="submission-art" class="submission-label">Paste your ascii art here (max 66000 characters):</label><br>
                 <textarea id="submission-art" maxlength="66000" required></textarea><br>
@@ -26,7 +28,7 @@
         </div>
         <div class="content" style="display: none;"></div>
 
-        <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase.js"></script> <!-- TODO: replace this with the basic one and add the storage module -->
         <script src="intialize-firebase.js"></script>
     </body>
 </html>
