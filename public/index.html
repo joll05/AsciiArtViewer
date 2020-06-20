@@ -18,17 +18,17 @@
                 <input type="radio" id="upload-radio" name="submission-type" value="upload">
                 <br>
                 <div class="paste-area">
-                    <label for="submission-paste" class="submission-label">Paste your ascii art here (max 66000 characters):</label><br>
-                    <textarea id="submission-paste" maxlength="66000" name="submission-text"></textarea><br>
+                    <label for="submission-text" class="submission-label">Paste your ascii art here (max 100kb, about x characters):</label><br>
+                    <textarea id="submission-text" maxlength="66000" name="submission-text"></textarea><br>
                 </div>
                 <div class="upload-area" style="display: none;">
-                    <label for="submission-upload" class="submission-label">Upload your ascii art here (.txt files, max 100kb):</label><br>
-                    <input type="file" id="submission-upload" name="submission-file"><br>
+                    <label for="submission-upload" class="submission-label">Upload your ascii art here (max 100kb):</label><br>
+                    <input type="file" accept=".txt" id="submission-file" name="submission-file"><br>
                 </div>
-                <label for="submission-name" class="submission-label">Name of your ascii art (must be unique):</label><br>
+                <label for="submission-name" class="submission-label">Name of your ascii art (you may use a-z, 0-9 and _.):</label><br>
                 <input type="text" id="submission-name" name="submission-name" required><br><br>
                 <input type="submit">
-                <p class="error" style="display: none;">Error: Missing Error Message</p>
+                <p id="submission-error" class="error" style="display: none;">Error: Missing Error Message</p>
             </form>
             <form class="selection-item">
                 <h3>Load</h3>

@@ -9,5 +9,3 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-
-var storage = firebase.storage();
