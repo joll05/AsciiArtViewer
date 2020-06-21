@@ -6,9 +6,14 @@
 
         <link rel="stylesheet" href="style.css">
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+        <script src="js/jquery-3.5.1.min.js"></script>
     </head>
     <body>
+        <div class="content" style="display: none;">
+            <pre class="loading-text">Loading...</pre>
+            <p id="loading-error" class="error" style="display: none;">Error: Missing Error message</p>
+        </div>
         <div class="selection">
             <form class="selection-item" id="submission-form" action="">
                 <h3>Submit</h3>
@@ -37,11 +42,11 @@
                 <input type="submit" value="Load">
             </form>
         </div>
-        <div class="content" style="display: none;"></div>
 
         <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-storage.js"></script>
-        <script src="intialize-firebase.js"></script>
-        <script src="submission.js"></script>
+        <script src="js/intialize-firebase.js"></script>
+        <script src="js/submission.js"></script>
+        <script src="js/loading.js"></script>
     </body>
 </html>
