@@ -1,4 +1,4 @@
-var artToLoad = GetParameter("load");
+var artToLoad = GetParameter("load").toLowerCase();
 
 if(artToLoad){
     $(".selection").hide();
