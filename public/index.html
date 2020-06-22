@@ -6,13 +6,20 @@
 
         <link rel="stylesheet" href="style.css">
 
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-        <script src="js/jquery-3.5.1.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- <script src="js/jquery-3.5.1.min.js"></script> -->
+        <script src="js/flowtype.js"></script>
+        <script src="js/jquery.fittext.js"></script>
     </head>
     <body>
         <div class="content" style="display: none;">
-            <pre class="loading-text">Loading...</pre>
-            <p id="loading-error" class="error" style="display: none;">Error: Missing Error message</p>
+            <p class="loading-text">Loading...</p>
+            <p id="loading-error" class="error" style="display: none;">
+                <span class="message"></span>
+                <br>
+                <a href=".">Go back</a>
+            </p>
+            <div class="art"><pre></pre></div>
         </div>
         <div class="selection">
             <form class="selection-item" id="submission-form" action="">
@@ -21,26 +28,29 @@
                 <input type="radio" id="paste-radio" name="submission-type" value="paste" checked>
                 <label for="upload-radio">Upload art</label>
                 <input type="radio" id="upload-radio" name="submission-type" value="upload">
-                <br>
+                <br><br>
                 <div class="paste-area">
-                    <label for="submission-text" class="submission-label">Paste your ascii art here (max 100kb, about x characters):</label><br>
-                    <textarea id="submission-text" maxlength="66000" name="submission-text"></textarea><br>
+                    <label for="submission-text" class="submission-label">Paste your ascii art here (max 102 400 ascii characters or 100kb):</label><br>
+                    <textarea id="submission-text" maxlength="102400" name="submission-text" patt></textarea><br>
+                    <label for="submission-text" class="submission-label">Note: The max character count is optimised for <a href="https://en.wikipedia.org/wiki/ASCII#Printable_characters">ascii characters.</a><br>
+                        If you're using other characters your file size may be too large.</label><br><br>
                 </div>
                 <div class="upload-area" style="display: none;">
                     <label for="submission-upload" class="submission-label">Upload your ascii art here (max 100kb):</label><br>
                     <input type="file" accept=".txt" id="submission-file" name="submission-file"><br>
                 </div>
                 <label for="submission-name" class="submission-label">Name of your ascii art (you may use a-z, 0-9 and _.):</label><br>
-                <input type="text" id="submission-name" name="submission-name" required><br><br>
-                <input type="submit">
+                <input type="text" id="submission-name" name="submission-name" pattern="[A-Za-z0-9_]*" required><br><br>
+                <input type="submit" value="Submit">
                 <p id="submission-error" class="error" style="display: none;">Error: Missing Error Message</p>
             </form>
             <form class="selection-item">
                 <h3>Load</h3>
                 <label for="loading-name">Name:</label><br>
-                <input type="text" id="loading-name" name="load" required><br><br>
+                <input type="text" id="loading-name" name="load" pattern="[A-Za-z0-9_]*" required><br><br>
                 <input type="submit" value="Load">
             </form>
+            <p class="credit">Made by <a href="https://github.com/joll05">joll05</a>. Contact me at <a href="mailto://contact@joll05.me">contact@joll05.me</a>.</p>
         </div>
 
         <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>

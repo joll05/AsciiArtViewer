@@ -1,10 +1,28 @@
 var artToLoad = GetParameter("load");
-console.log("Wow!a");
 
 if(artToLoad){
     $(".selection").hide();
     $(".content").show();
-    console.log("Wow!");
+
+    var storageRef = firebase.storage().ref(`art/${artToLoad}.txt`)
+
+    storageRef.getDownloadURL().then(function(URL){
+        $.ajax({
+            url: URL,
+            type: "GET",
+            success: function(result){
+                $(".loading-text").hide()
+                $(".art pre").text(result);
+            },
+        });
+    }).catch(function(error){
+        ShowError(error.message_);
+    });
+}
+
+function ShowError(message){
+    $("#loading-error .message").html(`Error: ${message}`);
+    $("#loading-error").show();
 }
 
 function GetParameter(name){

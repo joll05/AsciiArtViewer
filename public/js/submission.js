@@ -15,7 +15,7 @@ $(form).submit(function(event){
         submissionType : $("input[name='submission-type']:checked").val(),
         submissionText : $("#submission-text").val(),
         submissionFile : $("#submission-file")[0].files[0],
-        name : $("#submission-name").val()
+        name : $("#submission-name").val().toLowerCase()
     };
 
     console.log(data);

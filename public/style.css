@@ -21,6 +21,25 @@ body {
     color: red;
 }
 
+.credit {
+    position: absolute;
+    bottom: 0;
+}
+
 .content {
-    line-height: 0;
+    position: absolute;
+    line-height: 1;
+    height: 100%;
+    width: 100%;
+}
+
+.art pre {
+    margin: 0;
+}
+
+
+@media (max-width: 800px) {
+    .selection {
+        display: block;
+    }
 }
