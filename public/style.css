@@ -6,14 +6,22 @@ body {
 .selection {
     display: flex;
     padding-left: 10px;
+    padding-right: 10px;
+    font-size: 1.25em;
+}
+
+.selection-divider {
+    display: none;
+    border-top: 2px solid #E9E9E9;
 }
 
 .selection-item {
     padding-right: 20px;
+    padding-bottom: 10px;
 }
 
 #submission-text {
-    width: 500px;
+    width: 600px;
     height: 300px;
 }
 
@@ -37,9 +45,12 @@ body {
     margin: 0;
 }
 
-
-@media (max-width: 800px) {
+@media (max-width: 900px), (orientation: portrait) {
     .selection {
+        display: block;
+    }
+
+    .selection-divider {
         display: block;
     }
 }
