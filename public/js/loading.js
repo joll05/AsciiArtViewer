@@ -4,7 +4,7 @@ if(artToLoad){
     $(".selection").hide();
     $(".content").show();
 
-    var storageRef = firebase.storage().ref(`art/${artToLoad}.txt`)
+    var storageRef = firebase.storage().ref(`art/${artToLoad.toLowerCase()}.txt`)
 
     storageRef.getDownloadURL().then(function(URL){
         $.ajax({
