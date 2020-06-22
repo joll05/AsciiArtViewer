@@ -16,13 +16,22 @@ if(artToLoad){
             },
         });
     }).catch(function(error){
-        ShowError(error.message_);
+        switch(error.code){
+            case 'storage/object-not-found':
+                ShowLoadingError("Art does not exist");
+                break;
+
+            default:
+                ShowLoadingError(error._message);
+                break;
+        }
     });
 }
 
-function ShowError(message){
+function ShowLoadingError(message){
     $("#loading-error .message").html(`Error: ${message}`);
     $("#loading-error").show();
+    $(".loading-text").hide();
 }
 
 function GetParameter(name){

@@ -18,8 +18,6 @@ $(form).submit(function(event){
         name : $("#submission-name").val().toLowerCase()
     };
 
-    console.log(data);
-
     var storageRef = firebase.storage().ref(`art/${data.name}.txt`);
 
     var fileToPut;
@@ -30,22 +28,30 @@ $(form).submit(function(event){
         fileToPut = data.submissionFile;
     }
 
-    var task = storageRef.put(fileToPut)
+    if(fileToPut.size > 100 * 1024){
+        ShowSubmissionError(`File too large (${Math.round((fileToPut.size / 1024) * 10) / 10}kb)`);
+        return;
+    }
 
-    task.on("state_changed", 
-        function progress(snapshot){},
-        function error(err){
-            ShowError(err.message_);
-            console.log(err);
-        },
-        
-        function complete(){
-            window.location.href = `?load=${data.name}`;
-        }
+    storageRef.getDownloadURL().then(function resolve(){
+        ShowSubmissionError("Art with this name already exists");
+    }, function reject(){
+        var task = storageRef.put(fileToPut)
+
+        task.on("state_changed", 
+            function progress(snapshot){},
+            function error(err){
+                ShowSubmissionError(err.message_);
+            },
+            
+            function complete(){
+                window.location.href = `?load=${data.name}`;
+            }
     );
+    });
 });
 
-function ShowError(message){
+function ShowSubmissionError(message){
     $("#submission-error").html(`Error: ${message}`);
     $("#submission-error").show();
 }
