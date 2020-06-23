@@ -28,6 +28,11 @@ $(form).submit(function(event){
         fileToPut = data.submissionFile;
     }
 
+    if(fileToPut.type != "text/plain"){
+        ShowSubmissionError("File is not a plain text file");
+        return;
+    }
+
     if(fileToPut.size > 100 * 1024){
         ShowSubmissionError(`File too large (${Math.round((fileToPut.size / 1024) * 10) / 10}kb)`);
         return;
