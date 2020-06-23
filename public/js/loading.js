@@ -1,6 +1,8 @@
-var artToLoad = GetParameter("load").toLowerCase();
+var artToLoad = GetParameter("load");
 
 if(artToLoad){
+    artToLoad = artToLoad.toLowerCase();
+
     $(".selection").hide();
     $(".content").show();
 
