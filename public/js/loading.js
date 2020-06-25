@@ -1,10 +1,10 @@
-var artToLoad = GetParameter("load");
+$("#loading-form").submit(function(event){
+    event.preventDefault();
+    LoadArt($("#loading-name").val());
+});
 
-if(artToLoad){
-    artToLoad = artToLoad.toLowerCase();
-
-    $(".selection").hide();
-    $(".content").show();
+function LoadArt(name){
+    var artToLoad = name.toLowerCase();
 
     var storageRef = firebase.storage().ref(`art/${artToLoad}.txt`)
 
@@ -13,27 +13,31 @@ if(artToLoad){
             url: URL,
             type: "GET",
             success: function(result){
-                $(".loading-text").hide()
-                $(".art pre").text(result);
+                $("#size-tester").show();
+                $("#size-tester pre").text(result);
+                $("#art").css("font-size", $("#art").width() / $("#size-tester").width());
+                $("#art pre").text(result);
+                $("#size-tester").hide();
+                $("#loading-error").hide();
             },
         });
     }).catch(function(error){
-        switch(error.code){
-            case 'storage/object-not-found':
-                ShowLoadingError("Art does not exist");
-                break;
-
-            default:
-                ShowLoadingError(error._message);
-                break;
+        console.log(error.code);
+        if(error.code == "storage/object-not-found"){
+            ShowLoadingError("Art does not exist");
+        }
+        else{
+            ShowLoadingError(error.message_);
         }
     });
 }
 
 function ShowLoadingError(message){
-    $("#loading-error .message").html(`Error: ${message}`);
+    console.log("ErrorA");
+    console.log(message);
+    $("#loading-error").html(`Error: ${message}`);
     $("#loading-error").show();
-    $(".loading-text").hide();
+    console.log("ErrorB");
 }
 
 function GetParameter(name){

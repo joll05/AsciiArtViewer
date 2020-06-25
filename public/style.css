@@ -4,6 +4,7 @@ body {
 }
 
 .selection {
+    position: relative;
     display: flex;
     padding-left: 10px;
     padding-right: 10px;
@@ -32,6 +33,7 @@ body {
 .credit {
     position: absolute;
     bottom: 0;
+    margin: 10px;
 }
 
 .content {
@@ -41,8 +43,23 @@ body {
     width: 100%;
 }
 
-.art pre {
+#art {
+    background-color: #F9F9F9;
+    border: 2px solid #F0F0F0;
+    width: 300px;
+}
+
+#art pre {
     margin: 0;
+}
+
+#size-tester {
+    position: fixed;
+    visibility: hidden;
+    width: auto;
+    height: auto;
+    white-space: nowrap;
+    font-size: 1px;
 }
 
 @media (max-width: 900px), (orientation: portrait) {

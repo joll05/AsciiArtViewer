@@ -50,7 +50,8 @@ $(form).submit(function(event){
             },
             
             function complete(){
-                window.location.href = `?load=${data.name}`;
+                $(form).trigger("reset");
+                LoadArt(name);
             }
     );
     });
